@@ -227,7 +227,30 @@
   /* вне экрана анимации стоят на паузе — их всё равно не видно */
   .off, .off *, .off::before, .off *::before, .off::after, .off *::after { animation-play-state: paused !important; }
 
-  @media (max-width: 640px) { .twosides { grid-template-columns: 1fr; } .glass { padding: 26px; } .bot .bubble { display: none; } }
+  .bot .bubble { transition: opacity .4s, transform .4s; }
+  @media (max-width: 640px) {
+    main { padding: 24px 14px 140px; }
+    .hero { padding: 40px 0 20px; }
+    .twosides { grid-template-columns: 1fr; }
+    .glass { padding: 24px 18px; margin: 22px 0; border-radius: 24px; }
+    /* бейдж — над заголовком, а не поверх него */
+    .ai-badge { position: static; display: inline-block; margin-bottom: 14px; font-size: 11px; }
+    /* счётчики — сеткой 2×2 */
+    .stats { grid-template-columns: 1fr 1fr; gap: 12px; margin: 36px 0; }
+    .stats .glass { margin: 0; padding: 18px 8px; border-radius: 20px; }
+    .stat b { font-size: 34px; }
+    .stat small { font-size: 13px; display: block; line-height: 1.3; }
+    .card { padding: 20px; }
+    .card .ico { font-size: 44px; }
+    .quote .mark { font-size: 110px; }
+    p { font-size: 17px; }
+    .big { font-size: 23px; }
+    /* бот компактнее; облачко появляется на 6 секунд и само прячется */
+    .bot { right: 12px; bottom: 12px; gap: 8px; }
+    .bot .face { width: 54px; height: 54px; font-size: 28px; }
+    .bot .bubble { max-width: calc(100vw - 90px); font-size: 14px; padding: 11px 13px; }
+    .bot .bubble.quiet { opacity: 0; transform: translateY(10px) scale(.9); pointer-events: none; }
+  }
 </style>
 </head>
 <body>
@@ -496,14 +519,19 @@
     return botLines[bag.pop()];
   }
   function pick(arr) { return arr[Math.random() * arr.length | 0]; }
+  let quietTimer;
+  function quietLater() { clearTimeout(quietTimer); quietTimer = setTimeout(() => msg.classList.add('quiet'), 6000); }
+  quietLater();
   function say(text) {
     lastSay = performance.now();
     clearTimeout(typingTimer);
+    msg.classList.remove('quiet');
     msg.textContent = '💬 ВодаБот печатает…';
     msg.style.animation = 'none'; msg.offsetHeight; msg.style.animation = 'pop .4s both';
     typingTimer = setTimeout(() => {
       msg.textContent = text;
       msg.style.animation = 'none'; msg.offsetHeight; msg.style.animation = 'pop .5s both';
+      quietLater();
     }, 500 + Math.random() * 500);
   }
 
