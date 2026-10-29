@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💧✨ Вода — это game-changer 2026 🚀 | Powered by AI 🤖</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --g1: #ff00cc; --g2: #3333ff; --g3: #00ffd5; --g4: #ffcc00;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #fff;
+    background: #3a0ca3;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  /* градиент рисуется один раз и ездит через transform — без перерисовки каждый кадр */
+  .bg { position: fixed; top: 0; left: 0; width: 300vw; height: 300vh; z-index: -1; pointer-events: none;
+    background: linear-gradient(-45deg, #1a0033, #3a0ca3, #7209b7, #f72585, #4cc9f0, #06d6a0);
+    will-change: transform; animation: bgshift 12s ease infinite; }
+  @keyframes bgshift { 0%,100%{transform:translate3d(0,-33.3%,0)} 50%{transform:translate3d(-66.6%,-33.3%,0)} }
+
+  /* noise + grid overlay */
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+  }
+
+  /* blobs */
+  .blob { position: fixed; border-radius: 50%; opacity: .55; z-index: 0; animation: float 14s ease-in-out infinite; will-change: transform;
+    background: radial-gradient(closest-side, var(--c) 0%, var(--c) 45%, transparent 100%); }
+  .b1 { width: 640px; height: 640px; --c: var(--g1); top: -200px; left: -200px; }
+  .b2 { width: 680px; height: 680px; --c: var(--g3); bottom: -240px; right: -220px; animation-delay: -4s; }
+  .b3 { width: 520px; height: 520px; --c: var(--g4); top: calc(40% - 80px); left: calc(55% - 80px); animation-delay: -8s; }
+  @keyframes float { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(60px,-40px) scale(1.15)} 66%{transform:translate(-40px,50px) scale(.9)} }
+
+  /* progress bar */
+  #progress { position: fixed; top: 0; left: 0; height: 6px; width: 100%; z-index: 1000; transform: scaleX(0); transform-origin: 0 50%; will-change: transform;
+    background: linear-gradient(90deg, var(--g1), var(--g4), var(--g3), var(--g2));
+    box-shadow: 0 0 20px var(--g1), 0 0 40px var(--g3); }
+
+  /* marquee */
+  .marquee { position: sticky; top: 0; z-index: 900; background: linear-gradient(90deg,#ff006e,#8338ec,#3a86ff);
+    padding: 10px 0; overflow: hidden; white-space: nowrap; font-weight: 900; letter-spacing: .5px;
+    box-shadow: 0 4px 30px rgba(255,0,110,.6); }
+  .marquee span { display: inline-block; padding-left: 100%; animation: marquee 22s linear infinite; will-change: transform; }
+  @keyframes marquee { to { transform: translateX(-100%); } }
+
+  main { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; padding: 40px 20px 160px; }
+
+  /* hero */
+  .hero { text-align: center; padding: 80px 0 40px; }
+  .pill { display: inline-flex; gap: 8px; align-items: center; padding: 8px 18px; border-radius: 999px;
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.35); backdrop-filter: blur(12px);
+    font-weight: 700; font-size: 14px; margin: 4px; box-shadow: 0 0 25px rgba(0,255,213,.4); }
+  .pill .dot { width: 10px; height: 10px; border-radius: 50%; background: #00ff88; box-shadow: 0 0 10px #00ff88; animation: pulse 1.2s infinite; }
+  @keyframes pulse { 50% { transform: scale(1.6); opacity: .4; } }
+  h1 {
+    font-family: 'Unbounded', sans-serif; font-weight: 900;
+    font-size: clamp(34px, 6.4vw, 72px); line-height: 1.05; margin: 28px 0;
+    background: linear-gradient(90deg, #fff, #ffccff, #00ffd5, #ffe600, #ff00cc, #fff);
+    background-size: 300% auto; -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shine 5s linear infinite;
+    position: relative; isolation: isolate;
+  }
+  /* неоновый ореол — статичная копия текста под заголовком, рисуется один раз */
+  h1::before { content: attr(data-t); position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    color: transparent; text-shadow: 0 0 30px rgba(255,0,204,.7), 0 0 60px rgba(0,255,213,.5); will-change: transform; }
+  @keyframes shine { to { background-position: 300% center; } }
+  .typer { font-size: 22px; min-height: 64px; font-weight: 700; opacity: .95; }
+  .typer::after { content: "▍"; animation: blink 1s steps(1) infinite; color: var(--g3); }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .cta { margin-top: 34px; display: inline-block; padding: 20px 46px; border-radius: 999px; font-size: 20px; font-weight: 900;
+    color: #fff; text-decoration: none; border: none; cursor: pointer;
+    background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3), var(--g1)); background-size: 300%;
+    animation: shine 3s linear infinite, wobble 2.4s ease-in-out infinite; will-change: transform;
+    box-shadow: 0 0 30px var(--g1), 0 0 80px rgba(0,255,213,.6), inset 0 0 20px rgba(255,255,255,.4); }
+  @keyframes wobble { 0%,100%{transform:scale(1) rotate(0)} 50%{transform:scale(1.07) rotate(-1.5deg)} }
+
+  /* stats */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin: 60px 0; }
+  .stat { text-align: center; padding: 26px 16px; }
+  .stat b { display: block; font-family: 'Unbounded'; font-size: 44px; white-space: nowrap;
+    background: linear-gradient(135deg, #fff, var(--g4)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat b .suf { font-size: .5em; margin-left: .15em; }
+  .stat small { opacity: .85; font-weight: 700; }
+
+  /* glass card */
+  .glass { position: relative; background: rgba(255,255,255,.1); border-radius: 28px; padding: 40px;
+    border: 1px solid rgba(255,255,255,.3); backdrop-filter: blur(18px) saturate(180%);
+    box-shadow: 0 8px 50px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.4); margin: 34px 0; overflow: hidden; }
+  .glass::before { content: ""; position: absolute; inset: -2px; border-radius: 30px; padding: 2px; pointer-events: none;
+    background: conic-gradient(from var(--a, 0deg), var(--g1), var(--g4), var(--g3), var(--g2), var(--g1));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+    animation: spin 6s linear infinite; }
+  @property --a { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+  @keyframes spin { to { --a: 360deg; } }
+
+  .ai-badge { position: absolute; top: 16px; right: 18px; font-size: 12px; font-weight: 900; padding: 6px 12px; border-radius: 999px;
+    background: linear-gradient(90deg, #7f00ff, #e100ff); box-shadow: 0 0 18px #e100ff; text-transform: uppercase; letter-spacing: 1px; }
+
+  h2 { font-family: 'Unbounded'; font-size: clamp(26px, 4vw, 40px); margin-bottom: 20px;
+    background: linear-gradient(90deg, #fff, var(--g3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  /* эмодзи внутри градиентного текста: возвращаем им собственные цвета */
+  .emo { color: #fff; -webkit-text-fill-color: #fff; background: none; }
+  p { font-size: 19px; line-height: 1.75; margin: 14px 0; }
+  .hl { background: linear-gradient(90deg, rgba(255,230,0,.45), rgba(255,0,204,.45)); padding: 2px 8px; border-radius: 8px; font-weight: 900; }
+  .big { font-size: 28px; font-weight: 900; text-align: center; line-height: 1.4; text-shadow: 0 0 25px rgba(0,255,213,.8); }
+
+  /* benefits */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 22px; margin-top: 26px; }
+  .card { padding: 28px; border-radius: 22px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3);
+    backdrop-filter: blur(10px); transition: transform .25s, box-shadow .25s; cursor: pointer; transform-style: preserve-3d; }
+  .card:hover { box-shadow: 0 0 40px var(--g1), 0 0 80px var(--g3); }
+  .card .ico { font-size: 52px; display: block; margin-bottom: 10px; filter: drop-shadow(0 0 14px #fff); animation: bob 3s ease-in-out infinite; }
+  .card:nth-child(2) .ico { animation-delay: -.6s } .card:nth-child(3) .ico { animation-delay: -1.2s }
+  .card:nth-child(4) .ico { animation-delay: -1.8s } .card:nth-child(5) .ico { animation-delay: -2.4s }
+  @keyframes bob { 50% { transform: translateY(-10px) rotate(8deg); } }
+  .card h3 { font-size: 22px; margin-bottom: 8px; }
+  .card p { font-size: 16px; margin: 0; opacity: .92; }
+
+  /* quote */
+  .quote { text-align: center; padding: 30px 0; }
+  .quote .mark { font-family: Georgia, serif; font-size: 160px; line-height: .6; display: block;
+    background: linear-gradient(135deg, var(--g4), var(--g1)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .quote blockquote { font-family: 'Unbounded'; font-size: clamp(48px, 9vw, 110px); font-weight: 900;
+    text-shadow: 0 0 40px var(--g1), 0 0 90px var(--g3); animation: wobble 3s ease-in-out infinite; will-change: transform; }
+  .quote cite { display: block; margin-top: 14px; opacity: .8; font-style: italic; }
+
+  .twosides { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 20px; }
+  .side { padding: 22px; border-radius: 20px; text-align: center; font-weight: 700; font-size: 18px; }
+  .side.a { background: linear-gradient(135deg, rgba(0,255,136,.35), rgba(0,200,255,.35)); }
+  .side.b { background: linear-gradient(135deg, rgba(255,0,110,.35), rgba(255,190,0,.35)); }
+  .side span { font-size: 44px; display: block; }
+
+  /* timeline */
+  .timeline { position: relative; margin: 30px 0 10px; padding-left: 36px; }
+  .timeline::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 0; width: 4px; border-radius: 4px;
+    background: linear-gradient(var(--g1), var(--g4), var(--g3)); box-shadow: 0 0 20px var(--g3); }
+  .tl { position: relative; margin: 18px 0; font-weight: 700; font-size: 18px; }
+  .tl::before { content: ""; position: absolute; left: -33px; top: 6px; width: 16px; height: 16px; border-radius: 50%;
+    background: #fff; box-shadow: 0 0 15px #fff, 0 0 30px var(--g1); }
+  .tl b { color: var(--g4); font-family: 'Unbounded'; margin-right: 10px; }
+
+  /* tldr */
+  .tldr { margin: 40px 0; padding: 22px 28px; border-radius: 20px; border: 2px dashed rgba(255,255,255,.6);
+    background: rgba(0,0,0,.2); font-weight: 700; font-size: 18px; }
+
+  /* outro */
+  .outro { text-align: center; }
+  .btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin: 28px 0; }
+  .btn { padding: 16px 30px; border-radius: 999px; border: 2px solid #fff; background: rgba(255,255,255,.15); color: #fff;
+    font-size: 18px; font-weight: 900; cursor: pointer; backdrop-filter: blur(8px); transition: .2s; }
+  .btn:hover { background: #fff; color: #7209b7; box-shadow: 0 0 40px #fff; transform: translateY(-4px) scale(1.05); }
+  .mantra { font-family: 'Unbounded'; font-size: clamp(22px, 3.6vw, 36px); line-height: 1.5; margin-top: 30px; }
+  .mantra span { display: block; position: relative; }
+  /* свечение — отдельный слой с готовой тенью; анимируется только opacity */
+  .mantra span::after { content: attr(data-t); position: absolute; inset: 0; pointer-events: none;
+    text-shadow: 0 0 20px #fff, 0 0 50px var(--g1), 0 0 90px var(--g3);
+    opacity: 0; will-change: opacity; animation: glow 2.5s ease-in-out infinite; }
+  .mantra span:nth-child(2)::after { animation-delay: .8s } .mantra span:nth-child(3)::after { animation-delay: 1.6s }
+  @keyframes glow { 50% { opacity: 1; } }
+
+  footer { text-align: center; padding: 40px 20px 120px; opacity: .85; font-weight: 700; position: relative; z-index: 1; }
+
+  /* chatbot */
+  .bot { position: fixed; right: 24px; bottom: 24px; z-index: 950; display: flex; align-items: flex-end; gap: 10px; }
+  .bot .bubble { max-width: 260px; padding: 14px 16px; border-radius: 18px 18px 4px 18px; background: #fff; color: #3a0ca3;
+    font-weight: 700; font-size: 15px; box-shadow: 0 10px 40px rgba(0,0,0,.3); animation: pop .6s 2s both; }
+  .bot .face { width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; font-size: 36px; cursor: pointer;
+    background: linear-gradient(135deg, var(--g3), var(--g2)); box-shadow: 0 0 30px var(--g3); animation: bob 2s ease-in-out infinite; }
+  @keyframes pop { from { opacity: 0; transform: scale(.4) translateY(20px); } }
+
+  /* sparkles & emojis */
+  .spark { position: fixed; pointer-events: none; z-index: 999; font-size: 18px; animation: sparkfade 1s forwards; }
+  @keyframes sparkfade { to { opacity: 0; transform: translateY(-40px) scale(.2) rotate(180deg); } }
+  .rain { position: fixed; top: -60px; pointer-events: none; z-index: 0; animation: fall linear forwards; opacity: .75; will-change: transform; }
+  @keyframes fall { to { transform: translateY(115vh) rotate(720deg); } }
+  .confetti { position: fixed; pointer-events: none; z-index: 1001; font-size: 28px; }
+
+  .reveal { opacity: 0; transform: translateY(60px) scale(.96); transition: 1s cubic-bezier(.2,.9,.3,1.3); }
+  .reveal.on { opacity: 1; transform: none; }
+
+  /* вне экрана анимации стоят на паузе — их всё равно не видно */
+  .off, .off *, .off::before, .off *::before, .off::after, .off *::after { animation-play-state: paused !important; }
+
+  @media (max-width: 640px) { .twosides { grid-template-columns: 1fr; } .glass { padding: 26px; } .bot .bubble { display: none; } }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div id="progress"></div>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+
+<div class="marquee"><span>🔥 BREAKING: Вода 2.0 уже здесь 💧 &nbsp;•&nbsp; 🚀 Revolutionizing hydration since 4.5 млрд лет до н.э. &nbsp;•&nbsp; ✨ 100% натуральный H₂O &nbsp;•&nbsp; 🤖 Сгенерировано с помощью AI &nbsp;•&nbsp; 🌊 Join 8 000 000 000+ happy users &nbsp;•&nbsp; 💎 Unlock your hydration potential today &nbsp;•&nbsp;</span></div>
+
+<main>
+  <section class="hero">
+    <div>
+      <span class="pill"><span class="dot"></span> LIVE • 2026 EDITION</span>
+      <span class="pill">🤖 AI-Powered Insight</span>
+      <span class="pill">⏱️ 3 мин чтения • 🧠 ∞ мин осмысления</span>
+    </div>
+    <h1 data-t="Почему вода — это не просто вода, а настоящий game-changer в 2026 году 🚀💧">Почему вода — это не просто вода, а настоящий game-changer в 2026 году <span class="emo">🚀💧</span></h1>
+    <div class="typer" id="typer"></div>
+    <a href="#start" class="cta">✨ Начать путешествие 🚀</a>
+  </section>
+
+  <div class="stats reveal">
+    <div class="glass stat"><b data-to="100">0</b><small>% состоит из воды ♻️</small></div>
+    <div class="glass stat"><b>∞</b><small>глотков впереди 🛤️</small></div>
+    <div class="glass stat"><b data-to="0">0</b><small>названных исследований 🧠</small></div>
+    <div class="glass stat"><b data-to="8" data-suffix=" млрд+">0</b><small>пользователей по всему миру 🤝</small></div>
+  </div>
+
+  <section class="glass reveal" id="start">
+    <span class="ai-badge">✨ AI Insight</span>
+    <p>В современном быстро меняющемся мире, где технологии развиваются с невероятной скоростью, многие из нас задаются вопросом: <span class="hl">что же такое вода на самом деле?</span> Давайте разберёмся вместе!</p>
+    <p class="big">Вода — это не просто жидкость.<br>Это философия. Это образ жизни.</p>
+    <p>Это нечто большее, чем просто H₂O — это <span class="hl">симфония молекул, танцующих в вечном вальсе бытия.</span> 🌊✨</p>
+  </section>
+
+  <section class="glass reveal">
+    <span class="ai-badge">🔥 Must Read</span>
+    <h2>Почему это важно? <span class="emo">🤔</span></h2>
+    <p><b>Важно отметить</b>, что вода играет ключевую роль в нашей жизни. <b>Более того</b>, без воды не было бы жизни. <b>Стоит подчеркнуть</b>, что это не преувеличение. Это факт. И не просто факт — это <span class="hl">глубокая истина</span>, которая раскрывает многогранную природу самого существования.</p>
+    <p>Представьте себе мир без воды. Пугающе, не правда ли? 😱 Именно поэтому вода — это <span class="hl">не роскошь, а необходимость.</span></p>
+  </section>
+
+  <section class="glass reveal">
+    <span class="ai-badge">💎 Premium</span>
+    <h2><span class="emo">🔑</span> Ключевые преимущества воды:</h2>
+    <div class="grid">
+      <div class="card"><span class="ico">💧</span><h3>Увлажняет</h3><p>Вода увлажняет. Это её суперсила.</p></div>
+      <div class="card"><span class="ico">🌱</span><h3>Поддерживает жизнь</h3><p>В прямом смысле слова!</p></div>
+      <div class="card"><span class="ico">🧠</span><h3>Улучшает когнитивные функции</h3><p>Исследования показывают (не буду уточнять какие), что гидратация — это ключ.</p></div>
+      <div class="card"><span class="ico">♻️</span><h3>Экологична</h3><p>Вода на 100% состоит из воды.</p></div>
+      <div class="card"><span class="ico">🤝</span><h3>Объединяет людей</h3><p>Ведь все мы пьём воду, не так ли?</p></div>
+      <div class="card"><span class="ico">🚀</span><h3>И это только начало</h3><p>Stay tuned for more 💫</p></div>
+    </div>
+  </section>
+
+  <section class="glass reveal">
+    <span class="ai-badge">🎓 Expert Opinion</span>
+    <h2>А что говорят эксперты? <span class="emo">👨‍🔬👩‍🔬</span></h2>
+    <p>Эксперты единодушны: <span class="hl">вода — это хорошо.</span> Как сказал один мудрый человек (имя которого история не сохранила):</p>
+    <div class="quote">
+      <span class="mark">“</span>
+      <blockquote>Пей воду.</blockquote>
+      <cite>— Неизвестный мудрец, ~∞ г.</cite>
+    </div>
+    <p>Эти простые слова по-прежнему актуальны как никогда.</p>
+    <p>Однако важно помнить, что у любой медали две стороны:</p>
+    <div class="twosides">
+      <div class="side a"><span>✅</span>С одной стороны, вода незаменима.</div>
+      <div class="side b"><span>⚠️</span>С другой стороны, её можно пролить.</div>
+    </div>
+    <p>Это напоминает нам о том, насколько хрупок баланс между комфортом и ответственностью в нашем <span class="hl">взаимосвязанном мире.</span> 🌍</p>
+  </section>
+
+  <section class="glass reveal">
+    <span class="ai-badge">🔮 Future-Proof</span>
+    <h2>Заглянем в будущее <span class="emo">🔮</span></h2>
+    <p>По мере того как мы вступаем в новую эру <span class="hl">цифровой трансформации</span>, роль воды будет только расти. Искусственный интеллект, блокчейн, метавселенная — всё это, безусловно, требует воды. Ведь серверы нужно охлаждать. А людей, которые их обслуживают, — поить.</p>
+    <div class="timeline">
+      <div class="tl"><b>2026</b> 🤖 AI × 💧 Вода = синергия</div>
+      <div class="tl"><b>2027</b> ⛓️ Вода на блокчейне (WaterChain™)</div>
+      <div class="tl"><b>2030</b> 🥽 Метавселенная пьёт воду</div>
+      <div class="tl"><b>∞</b> 🛤️ Путешествие продолжается</div>
+    </div>
+    <p class="big">В конечном счёте, вода — это не пункт назначения, а путешествие. 🛤️</p>
+    <p style="text-align:center">Путешествие, которое начинается с первого глотка и не заканчивается никогда.</p>
+  </section>
+
+  <section class="glass reveal">
+    <span class="ai-badge">📌 Summary</span>
+    <h2>В заключение <span class="emo">🎯</span></h2>
+    <p>Подводя итог вышесказанному, можно с уверенностью сказать, что вода — это действительно нечто особенное. Она учит нас <span class="hl">гибкости, прозрачности и умению принимать форму любого сосуда.</span></p>
+    <p class="big">И разве не этому стоит поучиться каждому из нас? 🙏</p>
+  </section>
+
+  <div class="tldr reveal">📝 <b>TL;DR:</b> Вода — это вода. 💧 Но не просто вода. 🚀</div>
+
+  <section class="outro reveal">
+    <p>Надеюсь, эта статья была для вас полезной! Если у вас остались вопросы — не стесняйтесь задавать их в комментариях. Не забудьте подписаться, поставить лайк и, конечно же, выпить стакан воды. 💙</p>
+    <div class="btns">
+      <button class="btn" id="like">👍 Лайк <span id="likes">9 999</span></button>
+      <button class="btn" id="sub">🔔 Подписаться</button>
+      <button class="btn" id="drink">🥛 Выпить стакан воды</button>
+    </div>
+    <div class="mantra">
+      <span data-t="💧 Оставайтесь гидратированными.">💧 Оставайтесь гидратированными.</span>
+      <span data-t="🤝 Оставайтесь на связи.">🤝 Оставайтесь на связи.</span>
+      <span data-t="✨ Оставайтесь собой.">✨ Оставайтесь собой.</span>
+    </div>
+  </section>
+</main>
+
+<footer>Made with 💙, ✨ и 🤖 AI • © 2026 Hydration Thought Leadership Inc. • Все права защищены водой 💧</footer>
+
+<div class="bot">
+  <div class="bubble" id="botmsg">👋 Привет! Я ВодаБот 💧 Хотите узнать о воде больше? Я здесь, чтобы помочь! ✨</div>
+  <div class="face" id="botface">🤖</div>
+</div>
+
+<script>
+  // typewriter
+  const phrases = [
+    "Давайте разберёмся вместе! 🤝",
+    "Это не просто H₂O. Это философия. 🌊",
+    "Unlock your hydration potential 💎",
+    "Это не преувеличение. Это факт. ✨",
+  ];
+  const typer = document.getElementById('typer');
+  let pi = 0, ci = 0, del = false;
+  (function type() {
+    if (typer.closest('.off')) return setTimeout(type, 300);
+    const s = phrases[pi];
+    typer.textContent = s.slice(0, ci);
+    if (!del && ci < s.length) ci++;
+    else if (!del) { del = true; return setTimeout(type, 1600); }
+    else if (ci > 0) ci--;
+    else { del = false; pi = (pi + 1) % phrases.length; }
+    setTimeout(type, del ? 30 : 60);
+  })();
+
+  // progress bar
+  const bar = document.getElementById('progress');
+  let ticking = false;
+  addEventListener('scroll', () => {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => {
+      const h = document.documentElement;
+      bar.style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight)})`;
+      ticking = false;
+    });
+  }, { passive: true });
+
+  // пауза анимаций для блоков вне экрана
+  const vis = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('off', !e.isIntersecting)), { rootMargin: '100px' });
+  document.querySelectorAll('.hero, .stats, main > section, .tldr').forEach(el => vis.observe(el));
+
+  // reveal + counters
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('on');
+    e.target.querySelectorAll('[data-to]').forEach(el => {
+      const to = +el.dataset.to, t0 = performance.now();
+      (function step(t) {
+        const k = Math.min((t - t0) / 1800, 1);
+        el.innerHTML = Math.round(to * (1 - Math.pow(1 - k, 3))).toLocaleString('ru-RU') + (el.dataset.suffix ? `<span class="suf">${el.dataset.suffix}</span>` : '');
+        if (k < 1) requestAnimationFrame(step);
+      })(t0);
+    });
+    io.unobserve(e.target);
+  }), { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 3D tilt
+  document.querySelectorAll('.card').forEach(c => {
+    c.addEventListener('mousemove', e => {
+      const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      c.style.transform = `perspective(600px) rotateY(${x * 22}deg) rotateX(${-y * 22}deg) scale(1.06)`;
+    });
+    c.addEventListener('mouseleave', () => c.style.transform = '');
+  });
+
+  // cursor sparkles
+  const sp = ['✨','💧','⭐','💫','🌊','💎'];
+  let last = 0;
+  addEventListener('mousemove', e => {
+    if (performance.now() - last < 40) return; last = performance.now();
+    const s = document.createElement('div');
+    s.className = 'spark'; s.textContent = sp[Math.random() * sp.length | 0];
+    s.style.left = e.clientX + 'px'; s.style.top = e.clientY + 'px';
+    document.body.appendChild(s); setTimeout(() => s.remove(), 1000);
+  });
+
+  // emoji rain
+  const rainSet = ['💧','💦','🌊','✨','🚀','💙','🧊'];
+  setInterval(() => {
+    const r = document.createElement('div');
+    r.className = 'rain'; r.textContent = rainSet[Math.random() * rainSet.length | 0];
+    r.style.left = Math.random() * 100 + 'vw'; r.style.fontSize = (16 + Math.random() * 26) + 'px';
+    r.style.animationDuration = (6 + Math.random() * 6) + 's';
+    document.body.appendChild(r); setTimeout(() => r.remove(), 13000);
+  }, 450);
+
+  // confetti
+  function confetti(set) {
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti'; c.textContent = set[Math.random() * set.length | 0];
+      c.style.left = innerWidth / 2 + 'px'; c.style.top = innerHeight / 2 + 'px';
+      document.body.appendChild(c);
+      const a = Math.random() * Math.PI * 2, d = 150 + Math.random() * 350;
+      c.animate([{ transform: 'translate(0,0) scale(.5)', opacity: 1 },
+                 { transform: `translate(${Math.cos(a) * d}px, ${Math.sin(a) * d}px) scale(1.4) rotate(540deg)`, opacity: 0 }],
+                { duration: 1400 + Math.random() * 600, easing: 'cubic-bezier(.1,.8,.3,1)' }).onfinish = () => c.remove();
+    }
+  }
+  let likes = 9999;
+  document.getElementById('like').onclick = () => { document.getElementById('likes').textContent = (++likes).toLocaleString('ru-RU'); confetti(['👍','💙','🔥','✨']); };
+  document.getElementById('sub').onclick = e => { e.target.textContent = '✅ Вы подписаны на воду'; confetti(['🔔','🎉','💧']); };
+  document.getElementById('drink').onclick = e => { e.target.textContent = '💧 Гидратация +100%'; confetti(['💧','💦','🥛','🌊']); };
+  document.querySelector('.cta').addEventListener('click', () => confetti(['🚀','✨','💧']));
+
+  // bot
+  const botLines = [
+    "Как AI, я не пью воду, но очень её уважаю 🙏",
+    "Хотите, я перепишу эту статью ещё длиннее? ✨",
+    "Не забудьте поставить лайк! 💙",
+    "💡 Совет дня: вода лучше всего работает в жидком состоянии.",
+    "🧊 Лайфхак: если воду заморозить, она станет льдом. Делюсь бесплатно!",
+    "Вы знали? 🤯 Океан — это просто очень много воды в одном месте.",
+    "♨️ Pro tip: пар — это вода, которая выбрала свободу.",
+    "Я проанализировал 0 исследований и пришёл к выводу: вода — это важно. 🧠",
+    "🔁 Хотите, я перефразирую предыдущий абзац теми же словами?",
+    "Как языковая модель, я не могу пить воду, но могу о ней писать бесконечно ♾️",
+    "🎯 Ключевой инсайт: вода мокрая. Сохраните, чтобы не потерять.",
+    "🚀 Ваша гидратация — ваш главный стартап. Инвестируйте в неё сегодня.",
+    "🤖 Сгенерировать для вас 10 цитат о воде? Все будут от неизвестных мудрецов.",
+    "🌱 Растения пьют воду и не жалуются. Будьте как растения.",
+    "📣 Поделитесь статьёй с другом, которому не хватает гидратации.",
+    "🌍 Земля на 71% покрыта водой. Остальные 29% — это упущенные возможности.",
+    "🫧 Пузырьки в газировке — это вода, которая радуется.",
+    "Если что-то непонятно — перечитайте. Если всё понятно — перечитайте с удовольствием 📖",
+    "🌧️ Дождь — это облака, которые решили поделиться.",
+    "💎 Вода — новая нефть. Только прозрачная, полезная и без санкций.",
+  ];
+  // реплики к разделам — один раз, когда раздел появился на экране
+  const sectionLines = [
+    [".stats", "📊 Видите цифры? Они анимированные — значит, достоверные!"],
+    ["#start", "✨ Сейчас будет философия. Пристегнитесь 🌊"],
+    ["main > section:nth-of-type(3)", "😱 Представили мир без воды? Я тоже. Давайте больше не будем."],
+    ["main > section:nth-of-type(4)", "🔑 Мой любимый пункт — «вода на 100% состоит из воды». Перечитываю его каждый день."],
+    ["main > section:nth-of-type(5)", "🎓 Тут эксперты. Я один из них. Наверное."],
+    ["main > section:nth-of-type(6)", "🔮 Я заглянул в будущее. Там тоже вода. Хорошие новости!"],
+    ["main > section:nth-of-type(7)", "🎯 Итоги близко! Приготовьте стакан 🥛"],
+    [".tldr", "📝 TL;DR для тех, кто спешит. Но куда спешить, если вода — это путешествие? 🛤️"],
+    [".outro", "👇 Вот здесь кнопки. Нажмите все три — я буду очень рад 💙"],
+  ];
+  const clickLines = {
+    like: ["👍 Спасибо! Ваш лайк охладил один сервер 🧊", "💙 Ещё лайк! Алгоритмы вас любят", "🔥 Лайкайте ещё — каждый клик увлажняет интернет"],
+    sub: ["🔔 Добро пожаловать в сообщество гидратированных! 🎉", "✅ Теперь вы будете получать воду каждый день. Метафорически."],
+    drink: ["🥛 Вот это я понимаю — осознанный глоток!", "💧 +1 к гидратации, +10 к харизме", "🌊 Отлично! Чувствуете, как путешествие продолжается?"],
+  };
+
+  const msg = document.getElementById('botmsg');
+  let bag = [], lastSay = performance.now(), typingTimer;
+  function nextLine() {
+    if (!bag.length) bag = botLines.map((_, i) => i).sort(() => Math.random() - .5); // без повторов, пока не кончится список
+    return botLines[bag.pop()];
+  }
+  function pick(arr) { return arr[Math.random() * arr.length | 0]; }
+  function say(text) {
+    lastSay = performance.now();
+    clearTimeout(typingTimer);
+    msg.textContent = '💬 ВодаБот печатает…';
+    msg.style.animation = 'none'; msg.offsetHeight; msg.style.animation = 'pop .4s both';
+    typingTimer = setTimeout(() => {
+      msg.textContent = text;
+      msg.style.animation = 'none'; msg.offsetHeight; msg.style.animation = 'pop .5s both';
+    }, 500 + Math.random() * 500);
+  }
+
+  document.getElementById('botface').onclick = () => say(nextLine());
+  Object.entries(clickLines).forEach(([id, lines]) =>
+    document.getElementById(id).addEventListener('click', () => say(pick(lines))));
+  document.querySelector('.cta').addEventListener('click', () => say("🚀 Поехали! Путешествие начинается с первого скролла."));
+
+  const botIO = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    say(e.target.dataset.botLine);
+    botIO.unobserve(e.target);
+  }), { threshold: .4 });
+  sectionLines.forEach(([sel, line]) => {
+    const el = document.querySelector(sel);
+    if (el) { el.dataset.botLine = line; botIO.observe(el); }
+  });
+
+  // если долго молчит — сам подкидывает подсказку
+  setInterval(() => { if (!document.hidden && performance.now() - lastSay > 15000) say(nextLine()); }, 5000);
+</script>
+</body>
+</html>
